@@ -1,0 +1,45 @@
+{
+  "name": "resume2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cd frontend && yarn dev",
+    "build-gql": "ts-node -T ./scripts/buildGql.ts",
+    "deploy": "ts-node -T ./scripts/deploy.ts",
+    "reset": "rm -rf out/ && rm -rf .next/ && rm -rf node_modules/ && rm -rf backend/.serverless/ && rm -rf backend/.webpack/ && rm -rf backend/node_modules && rm backend/yarn.lock && rm yarn.lock",
+    "bootstrap": "yarn && cd backend && yarn && cd ../frontend && yarn",
+    "build": "cd frontend && yarn build",
+    "remove-all": "cd backend && npx sls remove"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.1",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/preset-typescript": "^7.24.1",
+    "@eslint/js": "^9.17.0",
+    "@types/lodash": "^4.17.14",
+    "@types/node": "^20",
+    "@types/yargs": "^17.0.33",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "15.0.2",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^3.4.2",
+    "ts-node": "10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5",
+    "typescript-eslint": "^8.19.0",
+    "yargs": "17.7.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

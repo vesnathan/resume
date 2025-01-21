@@ -1,0 +1,112 @@
+org: vesnathan
+app: resume
+service: backend
+
+frameworkVersion: "3"
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-southeast-2
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ses:SendEmail"
+      Resource: "*"
+
+plugins:
+  - serverless-s3-sync
+
+package:
+  exclude:
+    - node_modules/**
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  bucketName: nate-loudon.com
+  acmCertificateArn: ${env:ACM_CERTIFICATE_ARN}
+  s3Sync:
+    - bucketName: ${self:custom.bucketName}
+      localDir: ../frontend/out
+      deleteRemoved: true
+
+resources:
+  Resources:
+    StaticSiteBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: false
+          BlockPublicPolicy: false
+          IgnorePublicAcls: false
+          RestrictPublicBuckets: false
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+
+    StaticSiteBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: !Ref StaticSiteBucket
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: "*"
+              Action: "s3:GetObject"
+              Resource: !Sub "${StaticSiteBucket.Arn}/*"
+
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Enabled: true
+          Origins:
+            - DomainName: !Sub "${StaticSiteBucket}.s3.amazonaws.com"
+              Id: S3Origin
+              S3OriginConfig: {} # Use S3OriginConfig for S3 buckets
+          DefaultRootObject: index.html
+          DefaultCacheBehavior:
+            TargetOriginId: S3Origin
+            ViewerProtocolPolicy: redirect-to-https
+            AllowedMethods:
+              - GET
+              - HEAD
+            CachedMethods:
+              - GET
+              - HEAD
+            Compress: true
+            ForwardedValues:
+              QueryString: false
+              Cookies:
+                Forward: none
+          ViewerCertificate:
+            AcmCertificateArn: ${self:custom.acmCertificateArn}
+            SslSupportMethod: sni-only
+          Aliases:
+            - nate-loudon.com
+
+    Route53Record:
+      Type: AWS::Route53::RecordSet
+      Properties:
+        HostedZoneName: nate-loudon.com.
+        Name: nate-loudon.com.
+        Type: A
+        AliasTarget:
+          DNSName: !GetAtt CloudFrontDistribution.DomainName
+          HostedZoneId: Z2FDTNDATAQYW2 # Hosted Zone ID for CloudFront
+
+functions:
+  sendEmail:
+    handler: handler.sendEmail
+    environment:
+      SESIdentityArn: ${env:SES_IDENTITY_ARN}
+    events:
+      - http:
+          path: sendEmail
+          method: post
+          cors: true

@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless": "3.38.0",
+    "serverless-s3-sync": "^3.4.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.731.1"
+  }
+}
