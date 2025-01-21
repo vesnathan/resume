@@ -25,7 +25,7 @@ package:
 
 custom:
   stage: ${opt:stage, 'dev'}
-  bucketName: nate-loudon.com
+  bucketName: ${env:DOMAIN_NAME}
   acmCertificateArn: ${env:ACM_CERTIFICATE_ARN}
   s3Sync:
     - bucketName: ${self:custom.bucketName}
@@ -68,7 +68,7 @@ resources:
           Origins:
             - DomainName: !Sub "${StaticSiteBucket}.s3.amazonaws.com"
               Id: S3Origin
-              S3OriginConfig: {} # Use S3OriginConfig for S3 buckets
+              S3OriginConfig: {}
           DefaultRootObject: index.html
           DefaultCacheBehavior:
             TargetOriginId: S3Origin
@@ -88,13 +88,13 @@ resources:
             AcmCertificateArn: ${self:custom.acmCertificateArn}
             SslSupportMethod: sni-only
           Aliases:
-            - nate-loudon.com
+            - ${env:DOMAIN_NAME}
 
     Route53Record:
       Type: AWS::Route53::RecordSet
       Properties:
-        HostedZoneName: nate-loudon.com.
-        Name: nate-loudon.com.
+        HostedZoneName: ${env:DOMAIN_NAME}.
+        Name: ${env:DOMAIN_NAME}.
         Type: A
         AliasTarget:
           DNSName: !GetAtt CloudFrontDistribution.DomainName
