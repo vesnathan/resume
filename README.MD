@@ -1,6 +1,6 @@
-## RESUME
+# RESUME
 
-# LIBS/TECH USED
+## LIBS/TECH USED
 React  
 NextJS  
 TypeScript  
