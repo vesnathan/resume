@@ -2,7 +2,7 @@ import personalWebsiteImage from "@/assets/images/personalSite.png";
 import bjImage from "@/assets/images/bj.png";
 import { JSX } from "react";
 import { StaticImageData } from "next/image";
-import { Link } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import gsbImage from "@/assets/images/gsb.png";
 import cwlImage from "@/assets/images/cwl.png";
 
@@ -13,8 +13,10 @@ export interface Project {
   image: StaticImageData;
   imageAlt: string;
   technologies: string[];
-  liveDemo: JSX.Element;
+  liveDemo?: JSX.Element;
+  liveDemoText?: JSX.Element;
   github: JSX.Element;
+  githubText?: JSX.Element;
 }
 
 export const projects: Project[] = [
@@ -41,11 +43,17 @@ export const projects: Project[] = [
       "NextUI",
       "Framer Motion",
       "Zustand",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
     ],
-    liveDemo:  (
-      <Link href="https://nate-loudon.com" isExternal isBlock>Live Demo</Link>
+    github: (<Button onClick={() => {window.open("https://github.com/vesnathan/resume", "_blank");
+      }}>GitHub</Button>
     ),
-    github: (<Link href="https://github.com/vesnathan/resume" isExternal isBlock>GitHub</Link>),
   },
   {
     id: 1,
@@ -59,11 +67,9 @@ export const projects: Project[] = [
           directly to YouTube, while the platform automatically retrieves and
           displays the stream for the audience.
         </p>
-        <p>
-          This stack is expensive to run for an application not yet in
-          production. If you would like a demo I am happy to arrange this with
-          you.
-        </p>
+        <span className="font-bold">Live Demo</span>
+        <p>Please note that this stack is expensive to run for a not in production app. I am happy to demo for you but the stack will need to be deployed first.</p>
+        
       </div>
     ),
     image: cwlImage,
@@ -83,12 +89,19 @@ export const projects: Project[] = [
       "AWS Cloudfront",
       "AWS Route 53",
       "AWS Lambda",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
     ],
-    liveDemo: <div />,
+    liveDemoText: (<p>
+      This stack is expensive to run for an application not yet in
+      production. If you would like a demo I am happy to arrange this with
+      you.
+    </p>),
     github: (
-      <Link href="https://github.com/vesnathan/nl-mono-repo" isExternal isBlock>
-        GitHub
-      </Link>
+      <Button onClick={() => {
+        window.open("https://github.com/vesnathan/nl-mono-repo", "_blank");
+      }}>GitHub</Button>
     ),
   },
   {
@@ -98,7 +111,7 @@ export const projects: Project[] = [
       <div>
         <p>
           This was a project I completed as the final presentation for the Web
-          Dev Bootcamp.{" "}
+          Dev Bootcamp. The project is not complete as it was built in two weeks and I haven&apos;t yet had time to revisit it.  
         </p>
         <p>
           The project is a web application that allows users to practice their
@@ -128,19 +141,19 @@ export const projects: Project[] = [
       "JSON Web Token",
       "PWA",
       "Stripe Elements",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
     ],
     liveDemo: (
-      <Link href="https://d3ze7h7tukqiz.cloudfront.net" isExternal>
-        Live Demo
-      </Link>
+      <Button onClick={() => {
+        window.open("https://d3ze7h7tukqiz.cloudfront.net", "_blank");
+      }}>Live Demo</Button>
     ),
     github: (
-      <Link
-        href="https://github.com/vesnathan/blackjack-card-counting-trainer"
-        isExternal
-      >
-        GitHub
-      </Link>
+      <Button onClick={() => {
+        window.open("https://github.com/vesnathan/blackjack-card-counting-trainer", "_blank");
+      }}>GitHub</Button>
     ),
   },
   {
@@ -166,16 +179,16 @@ export const projects: Project[] = [
     ),
     image: gsbImage,
     imageAlt: "Game Show Buzzer",
-    technologies: ["JavaScript", "HTML", "Sockets.IO", "Express", "Node.js"],
+    technologies: ["JavaScript", "HTML", "Sockets.IO", "Express", "Node.js", "AWS EC2", "Apache", "MariaDB"],
     liveDemo: (
-      <Link href="http://52.62.53.91:3000/demo.html" isExternal>
-        Live Demo
-      </Link>
+      <Button onClick={() => {
+        window.open("http://52.62.53.91:3000/demo.html", "_blank");
+      }}>Live Demo</Button>
     ),
     github: (
-      <Link href="https://github.com/vesnathan/GameShowBuzzer/" isExternal>
-        GitHub
-      </Link>
+      <Button onClick={() => {
+        window.open("https://github.com/vesnathan/GameShowBuzzer/", "_blank");
+      }}>GitHub</Button>
     ),
   },
 ];

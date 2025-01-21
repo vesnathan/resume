@@ -19,6 +19,9 @@ import zodLogo from "../assets/images/zod.png";
 import zustandLogo from "../assets/images/zustand.png";
 import echartsLogo from "../assets/images/echarts.png";
 import nodejsLogo from "../assets/images/nodejs.png";
+import html5Logo from "../assets/images/html5.png";
+import css3Logo from "../assets/images/css3.png";
+import jsLogo from "../assets/images/js.png";
 
 export const techLogos = [
   {
@@ -46,6 +49,21 @@ export const techLogos = [
     name: "Serverless",
     src: serverlessLogo,
     link: "https://www.serverless.com/",
+  },
+  {
+    name: "HTML5",
+    src: html5Logo,
+    link: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5CSS3",
+  },
+  {
+    name: "CSS3",
+    src: css3Logo,
+    link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  },
+  {
+    name: "JavaScript",
+    src: jsLogo,
+    link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
     name: "GraphQL",

@@ -28,25 +28,42 @@ export function ProjectsContent() {
                         width={500}
                         height={0}
                       />
+                      <div className="flex flex-row gap-2">
+                        <div className="flex flex-row gap-2 mt-5">
+                          <div className="">{project.liveDemo && project.liveDemo }</div>
+                          <div className="">{project.github}</div>
+                        </div>
+                      </div>
                     </div>
                     <div className="flex flex-col ml-5">
-                      <div className="font-semibold">Technologies Used:</div>
-                      <div className="ml-5">
-                        <ul>
-                          {project.technologies.map((tech: string) => (
-                            <li key={tech} className={liCSS}>
-                              {tech}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="flex flex-col ml-5 gap-5">
-                      <div className="flex flex-col gap-5">
-                        <div className="ml-5">{project.liveDemo}</div>
-                        <div className="ml-5">{project.github}</div>
-                      </div>
-                    </div>
+                    <div className="font-semibold">Technologies Used:</div>
+                    <div className="flex flex-row">
+                      <div className="flex flex-col">
+                          <div className="ml-5">
+                            <ul>
+                              {project.technologies.slice(0, 10).map((tech: string) => (
+                                <li key={tech} className={liCSS}>
+                                  {tech}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        {project.technologies.length > 10 && (
+                          <div className="flex flex-col ml-10">
+                            <div className="ml-5">
+                              <ul>
+                                {project.technologies.slice(10).map((tech: string) => (
+                                  <li key={tech} className={liCSS}>
+                                    {tech}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        )}
+                      </div>  
+                    </div>            
                   </div>
                   <Divider className="bg-white mb-5 opacity-20 mt-5" />
                 </div>
