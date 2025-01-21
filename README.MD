@@ -1,9 +1,15 @@
 ## RESUME
 
-# INSTALL  
-Clone repo  
-Run "yarn bootstrap"  
-Run "yarn build"
-Run "yarn deploy --stage <stageName>
-  
-*Your stage name needs to be added to valid envs  
+# LIBS/TECH USED
+React
+NextJS
+TypeScript
+TailwindCSS
+Serverless
+AWS SES
+AWS Route53
+AWS ApiGateway/Lambda
+NodeJS
+TS-Node
+
+

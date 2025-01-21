@@ -42,8 +42,10 @@ export const projects: Project[] = [
       "Framer Motion",
       "Zustand",
     ],
-    liveDemo: <div />,
-    github: <div />,
+    liveDemo:  (
+      <Link href="https://nate-loudon.com" isExternal isBlock>Live Demo</Link>
+    ),
+    github: (<Link href="https://github.com/vesnathan/resume" isExternal isBlock>GitHub</Link>),
   },
   {
     id: 1,
