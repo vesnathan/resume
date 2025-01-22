@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 
 const ses = new SESClient({ region: "us-east-1" });
@@ -10,8 +9,6 @@ export const sendEmail = async (event) => {
     if (!sesIdentityArn) {
       throw new Error("SES Identity ARN is not configured in the environment.");
     }
-
-    console.log("SES Identity ARN:", sesIdentityArn);
 
     const command = new SendEmailCommand({
       Destination: {
@@ -28,7 +25,6 @@ export const sendEmail = async (event) => {
     });
 
     const response = await ses.send(command);
-    console.log("SES Response:", response);
 
     return {
       statusCode: 200,
@@ -43,7 +39,6 @@ export const sendEmail = async (event) => {
       }),
     };
   } catch (error) {
-    console.error("Error sending email:", error);
 
     return {
       statusCode: 500,

@@ -49,28 +49,23 @@ export function ContactBox() {
         body: JSON.stringify({ fromAddress, message }),
       });
   
-      // Parse the response as JSON
       const data = await response.json();
-      console.log("Server response data:", data);
   
-      // Check if the fetch call was successful (e.g. 200 OK)
       if (!response.ok) {
         setIsSending(false);
         setSendError(data?.message || "Failed to send email");
         return;
       }
   
-      // Now you can access data.success or any other field
       if (data.success) {
         setEmailSent(true);
-        console.log("Email sent successfully");
       } else {
-        // If 'success' is false, handle it
         setSendError(data?.message || "Failed to send email");
       }
-    } catch (error) {
-      console.error("Failed to send email:", error);
-      setSendError("An unexpected error occurred.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setSendError(`An unexpected error occurred. ${error.message}`);
+      }
     } finally {
       setIsSending(false);
     }

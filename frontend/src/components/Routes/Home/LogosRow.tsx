@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const LogosRow = ({ row }: Props) => {
-  console.log("row", row);
   return (
     <div className="flex flex-row gap-5 justify-center items-center">
       {row.map((logo) => (
