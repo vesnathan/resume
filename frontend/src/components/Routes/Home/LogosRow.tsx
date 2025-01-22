@@ -1,12 +1,13 @@
-import { techLogos } from "@/constants/techLogos";
+import { LogoType } from "@/constants/techLogos";
 import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-  row: typeof techLogos;
+  row: LogoType[];
 }
 
 export const LogosRow = ({ row }: Props) => {
+  console.log("row", row);
   return (
     <div className="flex flex-row gap-5 justify-center items-center">
       {row.map((logo) => (

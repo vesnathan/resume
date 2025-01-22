@@ -22,8 +22,14 @@ import nodejsLogo from "../assets/images/nodejs.png";
 import html5Logo from "../assets/images/html5.png";
 import css3Logo from "../assets/images/css3.png";
 import jsLogo from "../assets/images/js.png";
+import { StaticImageData } from "next/image";
 
-export const techLogos = [
+export type LogoType = {
+  name: string,
+  src: StaticImageData,
+  link: string
+};
+export const techStack: LogoType[] = [
   {
     name: "React",
     src: reactLogo,
@@ -35,20 +41,46 @@ export const techLogos = [
     link: "https://www.typescriptlang.org/",
   },
   {
+    name: "Next.js",
+    src: nextjsLogo,
+    link: "https://nextjs.org/",
+  },
+  {
+    name: "Serverless",
+    src: serverlessLogo,
+    link: "https://www.serverless.com/",
+  },
+  
+  {
+    name: "AppSync",
+    src: appsyncLogo,
+    link: "https://aws.amazon.com/appsync/",
+  },
+  {
+    name: "GraphQL",
+    src: graphqlLogo,
+    link: "https://graphql.org/",
+  },
+  {
+    name: "Cognito",
+    src: cognitoLogo,
+    link: "https://aws.amazon.com/cognito/",
+  },
+  {
+    name: "DynamoDB",
+    src: dynamodbLogo,
+    link: "https://aws.amazon.com/dynamodb/",
+  },
+  {
     name: "NodeJS",
     src: nodejsLogo,
     link: "https://nodejs.org/en",
 
   },
   {
-    name: "Tailwind CSS",
-    src: tailwimndLogo,
-    link: "https://tailwindcss.com/",
-  },
-  {
-    name: "Serverless",
-    src: serverlessLogo,
-    link: "https://www.serverless.com/",
+    name: "Lambda",
+    src: lambdaLogo,
+    link: "https://aws.amazon.com/lambda/",
   },
   {
     name: "HTML5",
@@ -65,20 +97,16 @@ export const techLogos = [
     src: jsLogo,
     link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
+
+];
+
+
+export const libs = [
+
   {
-    name: "GraphQL",
-    src: graphqlLogo,
-    link: "https://graphql.org/",
-  },
-  {
-    name: "Next.js",
-    src: nextjsLogo,
-    link: "https://nextjs.org/",
-  },
-  {
-    name: "Lambda",
-    src: lambdaLogo,
-    link: "https://aws.amazon.com/lambda/",
+    name: "Tailwind CSS",
+    src: tailwimndLogo,
+    link: "https://tailwindcss.com/",
   },
   {
     name: "Lerna",
@@ -101,24 +129,9 @@ export const techLogos = [
     link: "https://zustand.surge.sh/",
   },
   {
-    name: "Cognito",
-    src: cognitoLogo,
-    link: "https://aws.amazon.com/cognito/",
-  },
-  {
-    name: "DynamoDB",
-    src: dynamodbLogo,
-    link: "https://aws.amazon.com/dynamodb/",
-  },
-  {
     name: "Jest",
     src: jestLogo,
     link: "https://jestjs.io/",
-  },
-  {
-    name: "AppSync",
-    src: appsyncLogo,
-    link: "https://aws.amazon.com/appsync/",
   },
   {
     name: "ESLint",

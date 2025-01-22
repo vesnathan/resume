@@ -20,4 +20,7 @@ DOMAIN_NAME
   
 These need to be created manually outside of the stack  
 
+After deployment Cloudfront needs to be manually validated.  
+TODO: Configure auto invalidation after S3 Sync  
+
 
