@@ -13,6 +13,7 @@ interface LogoScrollerProps {
   rows: LogoType[][];
   label: string;
   parentId: string;
+  IsPositioned: boolean;
   rowHeight?: number;
 }
 
@@ -20,14 +21,15 @@ export function LogoScroller({
   rows,
   label,
   parentId,
+  IsPositioned,
   rowHeight = 160,
 }: LogoScrollerProps) {
+  //
   const [rowIndex, setRowIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
-
   const [arrowDirection, setArrowDirection] = useState<"down" | "up">("down");
-
+  console.log("isPositioned", IsPositioned);
   function goToNextRow() {
     if (rowIndex < rows.length - 1) {
       setRowIndex((prev) => prev + 1);
@@ -79,9 +81,9 @@ export function LogoScroller({
   }, [rowIndex, rows.length]);
 
   return (
-    <>
+    <div className={cn(IsPositioned ? "opacity-100" : "opacity-0", "w-full flex justify-center items-center flex-col transition-opacity")}>
       {/* Label above the scroller */}
-      <h3 className={cn( "opacity-100", "text-white font-bold mt-5")}>
+      <h3 className={cn("text-white font-bold mt-5")}>
         {label}
       </h3>
 
@@ -107,6 +109,7 @@ export function LogoScroller({
             animate={{ y: (i - rowIndex) * rowHeight }}
             transition={{ duration: 0.6 }}
             onAnimationComplete={() => setIsAnimating(false)}
+            id={`row-${i}`}
           >
             <LogosRow row={row} />
           </motion.div>
@@ -126,6 +129,6 @@ export function LogoScroller({
       >
         <ScrollDownIndicator />
       </div>
-    </>
+    </div>
   );
 }

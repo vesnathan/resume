@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { chunkArray } from "@/utils/chunkArray";
 import { techStack, libs } from "@/constants/techLogos";
 import { LogoScroller } from "./LogoScroller";
 
 export function HomeContent() {
+  //
   const windowDimensions = useWindowDimensions();
-
+  const [isPositioned, setIsPositioned] = useState(false);
   const chunkSize =
     windowDimensions.width < 404
       ? 2
@@ -21,6 +22,26 @@ export function HomeContent() {
   const techStackRows = chunkArray({ array: techStack, size: chunkSize });
   const libsRows = chunkArray({ array: libs, size: chunkSize });
 
+  useEffect(() => {
+    let frameId: number;
+    const checkPosition = () => {
+      const parent = document.getElementById("tech-logos-parent");
+      const child = document.getElementById("row-1");
+      if (!parent || !child) return;
+      const parentRect = parent.getBoundingClientRect();
+      const childRect = child.getBoundingClientRect();
+      const relativeTop = childRect.top - parentRect.top;
+      console.log("relativeTop", relativeTop);
+      if (relativeTop > 159) {
+        setIsPositioned(true);
+      } else {
+        frameId = requestAnimationFrame(checkPosition);
+      }
+    };
+    frameId = requestAnimationFrame(checkPosition);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+  
   return (
     <div className="relative flex justify-center h-full">
       <div className="grid grid-cols-12 relative z-10 h-full w-full justify-center items-center">
@@ -37,6 +58,7 @@ export function HomeContent() {
               rows={techStackRows}
               label="STACK"
               parentId="tech-logos-parent"
+              IsPositioned={isPositioned}
             />
 
             {/* LIBS SCROLLER */}
@@ -44,6 +66,7 @@ export function HomeContent() {
               rows={libsRows}
               label="LIBS"
               parentId="libs-logos-parent"
+              IsPositioned={isPositioned}
             />
 
           </div>
