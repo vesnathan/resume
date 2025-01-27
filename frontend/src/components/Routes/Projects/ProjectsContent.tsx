@@ -22,12 +22,14 @@ export function ProjectsContent() {
                   <div>{project.description}</div>
                   <div className="flex flex-row mt-5">
                     <div>
+                    {project.image && project.imageAlt && (
                       <Image
                         src={project.image}
                         alt={project.imageAlt}
                         width={500}
                         height={0}
                       />
+                      )}
                       <div className="flex flex-row gap-2">
                         <div className="flex flex-row gap-2 mt-5">
                           <div className="">{project.liveDemo && project.liveDemo }</div>

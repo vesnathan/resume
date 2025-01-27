@@ -10,8 +10,8 @@ export interface Project {
   id: number;
   name: string;
   description: JSX.Element;
-  image: StaticImageData;
-  imageAlt: string;
+  image?: StaticImageData;
+  imageAlt?: string;
   technologies: string[];
   liveDemo?: JSX.Element;
   liveDemoText?: JSX.Element;
@@ -56,14 +56,12 @@ export const projects: Project[] = [
     ),
   },  {
     id: 1,
-    name: "Machinbe Learning Answer Inference (2023)",
+    name: "Machine Learning Answer Inference (2023)",
     description: (
       <div>
-        This project will infer a correct or incorrect label to a students answer when given that answer, the question, and the document text. The deployment creates a Lambda function which loads a Docker container with Python 3.8 and Pytorch as well as Transformers and other rewuired libraries. 
+        This project will infer a correct or incorrect label to a students answer when given that answer, the question, and the document text. The deployment creates a Lambda function which loads a Docker container with Python 3.8 and Pytorch as well as Transformers and other required libraries. 
       </div>
     ),
-    imageAlt: "Personal Website",
-    image: personalWebsiteImage,
 
     technologies: [
       "Python",
