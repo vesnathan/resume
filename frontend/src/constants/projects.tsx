@@ -4,7 +4,7 @@ import { JSX } from "react";
 import { StaticImageData } from "next/image";
 import { Button } from "@nextui-org/react";
 import gsbImage from "@/assets/images/gsb.png";
-// import cwlImage from "@/assets/images/cwl.png";
+import cwlImage from "@/assets/images/cwl.png";
 
 export interface Project {
   id: number;
@@ -54,58 +54,84 @@ export const projects: Project[] = [
     github: (<Button onClick={() => {window.open("https://github.com/vesnathan/resume", "_blank");
       }}>GitHub</Button>
     ),
+  },  {
+    id: 1,
+    name: "Machinbe Learning Answer Inference (2023)",
+    description: (
+      <div>
+        This project will infer a correct or incorrect label to a students answer when given that answer, the question, and the document text. The deployment creates a Lambda function which loads a Docker container with Python 3.8 and Pytorch as well as Transformers and other rewuired libraries. 
+      </div>
+    ),
+    imageAlt: "Personal Website",
+    image: personalWebsiteImage,
+
+    technologies: [
+      "Python",
+      "Jupyter Notebook",
+      "Google Colab",
+      "AWS Serverless Application Model",
+      "Pytorch",
+      "Docker",
+      "AWS Lambda",
+      "AWS DynamoDB",
+      "PyTorch",
+      "Transformers",
+    ],
+    github: (<Button onClick={() => {window.open("https://github.com/vesnathan/SAM_ML_QA", "_blank");
+      }}>GitHub</Button>
+    ),
   },
-  // {
-  //   id: 1,
-  //   name: "Cloudwatch Live (2024 - )",
-  //   description: (
-  //     <div>
-  //       <p>
-  //         Cloudwatch Live is a web application designed for event managers to
-  //         create agendas and live-stream their conferences seamlessly. It
-  //         integrates with YouTube Live, enabling technical teams to stream
-  //         directly to YouTube, while the platform automatically retrieves and
-  //         displays the stream for the audience.
-  //       </p>
-  //       <span className="font-bold">Live Demo</span>
-  //       <p>Please note that this stack is expensive to run for a not in production app. I am happy to demo for you but the stack will need to be deployed first.</p>
-        
-  //     </div>
-  //   ),
-  //   image: cwlImage,
-  //   imageAlt: "Cloudwatch Live",
-  //   technologies: [
-  //     "React",
-  //     "TypeScript",
-  //     "Next.JS",
-  //     "NextUI",
-  //     "Framer Motion",
-  //     "Zustand",
-  //     "AWS Amplify",
-  //     "AWS Cognito",
-  //     "AWS AppSync",
-  //     "AWS DynamoDB",
-  //     "AWS S3",
-  //     "AWS Cloudfront",
-  //     "AWS Route 53",
-  //     "AWS Lambda",
-  //     "HTML5",
-  //     "CSS3",
-  //     "JavaScript",
-  //   ],
-  //   liveDemoText: (<p>
-  //     This stack is expensive to run for an application not yet in
-  //     production. If you would like a demo I am happy to arrange this with
-  //     you.
-  //   </p>),
-  //   github: (
-  //     <Button onClick={() => {
-  //       window.open("https://github.com/vesnathan/nl-mono-repo", "_blank");
-  //     }}>GitHub</Button>
-  //   ),
-  // },
   {
     id: 2,
+    name: "Cloudwatch Live (2024 - )",
+    description: (
+      <div>
+        <p>
+          Cloudwatch Live is a web application designed for event managers to
+          create agendas and live-stream their conferences seamlessly. It
+          integrates with YouTube Live, enabling technical teams to stream
+          directly to YouTube, while the platform automatically retrieves and
+          displays the stream for the audience.
+        </p>
+        <span className="font-bold">Live Demo</span>
+        <p>Please note that this stack is expensive to run for a not in production app. I am happy to demo for you but the stack will need to be deployed first.</p>
+        
+      </div>
+    ),
+    image: cwlImage,
+    imageAlt: "Cloudwatch Live",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Next.JS",
+      "NextUI",
+      "Framer Motion",
+      "Zustand",
+      "AWS Amplify",
+      "AWS Cognito",
+      "AWS AppSync",
+      "AWS DynamoDB",
+      "AWS S3",
+      "AWS Cloudfront",
+      "AWS Route 53",
+      "AWS Lambda",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+    ],
+    liveDemoText: (<p>
+      This stack is expensive to run for an application not yet in
+      production. If you would like a demo I am happy to arrange this with
+      you.
+    </p>),
+    github: (
+      <Button onClick={() => {
+        window.open("https://github.com/vesnathan/nl-mono-repo", "_blank");
+      }}>GitHub</Button>
+    ),
+  },
+  {
+    id: 3,
     name: "Black Jack Advantage Play Trainer (2022)",
     description: (
       <div>
@@ -157,7 +183,7 @@ export const projects: Project[] = [
     ),
   },
   {
-    id: 3,
+    id: 4,
     name: "Game Show Buzzer (2016)",
     description: (
       <div>
