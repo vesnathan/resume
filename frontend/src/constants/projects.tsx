@@ -116,6 +116,7 @@ export const projects: Project[] = [
       "HTML5",
       "CSS3",
       "JavaScript",
+      "GitHub Actions",
     ],
     liveDemoText: (<p>
       This stack is expensive to run for an application not yet in

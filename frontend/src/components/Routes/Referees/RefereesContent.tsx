@@ -16,7 +16,7 @@ export function RefereesContent() {
               <div className="flex flex-col">
                 <h2 className="font-bold">Khai Phan</h2>
                 <span>Evolucian</span>
-                <div className="ml-5">
+                {/* <div className="ml-5">
                   <div className="flex flex-row gap-5 mt-2">
                     <Icon icon="eva:email-outline" />
                     khai@financialtrainingaustralia.com
@@ -25,12 +25,12 @@ export function RefereesContent() {
                     <Icon icon="eva:phone-outline" />
                     (+61) 478 455 557
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-col">
                 <h2 className="font-bold">Son Dang</h2>
                 <span>Financial Training Australia</span>
-                <div className="ml-5">
+                {/* <div className="ml-5">
                   <div className="flex flex-row gap-5 mt-2">
                     <Icon icon="eva:email-outline" />
                     son@financialtrainingaustralia.com
@@ -40,12 +40,12 @@ export function RefereesContent() {
                     <Icon icon="eva:phone-outline" />
                     (+61) 414 594 091
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-col">
                 <h2 className="font-bold">Damien Free</h2>
                 <span>Scene Change Tasmania</span>
-                <div className="ml-5">
+                {/* <div className="ml-5">
                   <div className="flex flex-row gap-5 mt-2">
                     <Icon icon="eva:email-outline" />
                     dfree@scenechange.com.au
@@ -55,9 +55,10 @@ export function RefereesContent() {
                     <Icon icon="eva:phone-outline" />
                     (+61) 448 566 435
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
+            <span>Please contact me for referee contact details</span>
           </div>
         </div>
       </div>
